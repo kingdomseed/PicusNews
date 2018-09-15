@@ -1,3 +1,4 @@
 <resources>
-    <string name="app_name">PicusNews</string>
+    <string name="app_name">Picus News</string>
+    <string name="no_news">No news articles to display. Check your connection.</string>
 </resources>
