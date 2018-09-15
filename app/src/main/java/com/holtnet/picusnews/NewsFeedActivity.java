@@ -1,10 +1,13 @@
 package com.holtnet.picusnews;
 
+import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.v4.app.LoaderManager ;
+import android.support.v4.app.LoaderManager;
 import android.support.v4.content.Loader;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -16,7 +19,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
-public class NewsFeedActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<List<NewsArticle>>{
+public class NewsFeedActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<List<NewsArticle>> {
 
     private static final int NEWS_LOADER_ID = 1;
     private static final String NEWS_REQUEST_URL = "https://content.guardianapis.com/us/technology?show-tags=contributor&api-key=11ea37a2-6fe3-412b-bfa8-e984bf496acc";
@@ -33,8 +36,8 @@ public class NewsFeedActivity extends AppCompatActivity implements LoaderManager
         newsAdapter = new NewsAdapter(this, new ArrayList<NewsArticle>());
         newsArticleListView.setAdapter(newsAdapter);
 
-        LoaderManager loaderManager = getSupportLoaderManager();
-        loaderManager.initLoader(NEWS_LOADER_ID, null, this);
+        emptyStateTextView = findViewById(R.id.empty_view);
+        newsArticleListView.setEmptyView(emptyStateTextView);
 
         newsArticleListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -46,9 +49,20 @@ public class NewsFeedActivity extends AppCompatActivity implements LoaderManager
             }
         });
 
-        emptyStateTextView = findViewById(R.id.empty_view);
-        newsArticleListView.setEmptyView(emptyStateTextView);
+        ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
+        boolean isConnected = activeNetwork != null && activeNetwork.isConnectedOrConnecting();
 
+        if (isConnected) {
+
+
+            LoaderManager loaderManager = getSupportLoaderManager();
+            loaderManager.initLoader(NEWS_LOADER_ID, null, this);
+
+
+        } else {
+            emptyStateTextView.setText(R.string.no_internet);
+        }
     }
 
     @NonNull

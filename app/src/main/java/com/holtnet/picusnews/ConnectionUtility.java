@@ -20,8 +20,7 @@ import java.util.List;
 
 public final class ConnectionUtility {
 
-    private ConnectionUtility()
-    {
+    private ConnectionUtility() {
 
     }
 
@@ -37,8 +36,7 @@ public final class ConnectionUtility {
         String jsonResponse = null;
         try {
             jsonResponse = makeHttpRequest(url);
-        } catch (IOException e)
-        {
+        } catch (IOException e) {
             Log.e("ConnectionUtility JSON", "Problem making HTTP request");
         }
 
@@ -46,8 +44,7 @@ public final class ConnectionUtility {
     }
 
     private static List<NewsArticle> extractFeaturesFromJson(String jsonResponse) {
-        if(TextUtils.isEmpty(jsonResponse))
-        {
+        if (TextUtils.isEmpty(jsonResponse)) {
             return null;
         }
 
@@ -58,17 +55,15 @@ public final class ConnectionUtility {
             JSONObject responseObject = rootJSONResponse.getJSONObject("response");
             JSONArray resultsArray = responseObject.getJSONArray("results");
 
-            for(int i = 0; i < resultsArray.length(); i++) {
+            for (int i = 0; i < resultsArray.length(); i++) {
                 String contributor = null;
                 JSONObject currentNewsArticle = resultsArray.getJSONObject(i);
                 JSONArray getCurrentTags = currentNewsArticle.getJSONArray("tags");
-                if(getCurrentTags.length() > 0)
-                {
-                   JSONObject contributorTitleTag = getCurrentTags.getJSONObject(0);
-                   contributor = contributorTitleTag.getString("webTitle");
-                } else
-                {
-                   contributor = "No author listed.";
+                if (getCurrentTags.length() > 0) {
+                    JSONObject contributorTitleTag = getCurrentTags.getJSONObject(0);
+                    contributor = contributorTitleTag.getString("webTitle");
+                } else {
+                    contributor = "No author listed.";
                 }
                 String webTitle = currentNewsArticle.getString("webTitle");
                 String sectionName = currentNewsArticle.getString("sectionName");

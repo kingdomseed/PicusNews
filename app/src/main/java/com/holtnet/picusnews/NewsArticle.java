@@ -9,8 +9,7 @@ public class NewsArticle {
     private String webUrl;
 
     // package-private
-    NewsArticle(String title, String section, String date, String author, String url)
-    {
+    NewsArticle(String title, String section, String date, String author, String url) {
         webTitle = title;
         sectionName = section;
         webPublicationDate = date;
