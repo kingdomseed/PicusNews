@@ -35,7 +35,7 @@ public class NewsAdapter extends ArrayAdapter<NewsArticle>
         sectionTextView.setText(currentNewsArticle.getSectionName());
 
         TextView publishDateTextView = newsItemView.findViewById(R.id.date_published);
-        publishDateTextView.setText(currentNewsArticle.getWebPublicationDate());
+        publishDateTextView.setText(currentNewsArticle.getWebPublicationDate().replaceFirst("(\\d{4})-(\\d{2})-(\\d{2}).(\\d{2}):(\\d{2}):.{3}","$2-$3-$1 at $4:$5"));
 
         TextView authorTextView = newsItemView.findViewById(R.id.author_name);
         authorTextView.setText(currentNewsArticle.getPublicationAuthor());
