@@ -7,4 +7,6 @@
     <string name="settings_sections_label">Section Select</string>
     <string name="settings_sections_key" translatable="false">section_key</string>
     <string name="settings_starting_section_default" translatable="true">Technology</string>
+    <string name="prefs_summary">Choose a news section</string>
+
 </resources>

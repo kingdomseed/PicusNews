@@ -2,9 +2,11 @@ package com.holtnet.picusnews;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
+import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.LoaderManager;
@@ -24,7 +26,8 @@ import java.util.List;
 public class NewsFeedActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<List<NewsArticle>> {
 
     private static final int NEWS_LOADER_ID = 1;
-    private static final String NEWS_REQUEST_URL = "https://content.guardianapis.com/us/technology?show-tags=contributor&api-key=" + BuildConfig.GuardianAPIKey;
+    //API Key "11ea37a2-6fe3-412b-bfa8-e984bf496acc"
+    private static final String NEWS_REQUEST_URL = "https://content.guardianapis.com/us-news?show-tags=contributor&api-key=" + BuildConfig.GuardianAPIKey;
 
     private NewsAdapter newsAdapter;
     private TextView emptyStateTextView;
@@ -88,6 +91,8 @@ public class NewsFeedActivity extends AppCompatActivity implements LoaderManager
     @NonNull
     @Override
     public Loader<List<NewsArticle>> onCreateLoader(int i, @Nullable Bundle bundle) {
+        SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(this);
+
         return new NewsArticleLoader(this, NEWS_REQUEST_URL);
     }
 
