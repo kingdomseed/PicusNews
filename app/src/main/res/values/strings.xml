@@ -5,8 +5,22 @@
     <string name="settings_menu_item">Settings</string>
     <string name="settings_title">Picus News Settings</string>
     <string name="settings_sections_label">Section Select</string>
-    <string name="settings_sections_key" translatable="false">section_key</string>
-    <string name="settings_starting_section_default" translatable="true">Technology</string>
+    <string name="settings_sections_key" translatable="false">us-news</string>
+    <string name="settings_starting_section_default" translatable="true">US News</string>
     <string name="prefs_summary">Choose a news section</string>
 
+    <string name="settings_section_usNews_label">US News</string>
+    <string name="settings_section_usNews_key">us-news</string>
+
+    <string name="settings_section_tech_label">Technology</string>
+    <string name="settings_section_tech_key">technology</string>
+
+    <string name="settings_section_culture_label">Culture</string>
+    <string name="settings_section_culture_key">culture</string>
+
+    <string name="settings_section_sport_label">Sports</string>
+    <string name="settings_section_sport_key">sport</string>
+
+    <string name="settings_section_business_label">Business</string>
+    <string name="settings_section_business_key">business</string>
 </resources>

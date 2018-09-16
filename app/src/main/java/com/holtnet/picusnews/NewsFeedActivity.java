@@ -13,6 +13,7 @@ import android.support.v4.app.LoaderManager;
 import android.support.v4.content.Loader;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -27,7 +28,9 @@ public class NewsFeedActivity extends AppCompatActivity implements LoaderManager
 
     private static final int NEWS_LOADER_ID = 1;
     //API Key "11ea37a2-6fe3-412b-bfa8-e984bf496acc"
-    private static final String NEWS_REQUEST_URL = "https://content.guardianapis.com/us-news?show-tags=contributor&api-key=" + BuildConfig.GuardianAPIKey;
+    //us-news?show-tags=contributor&api-key=" + BuildConfig.GuardianAPIKey
+    private static final String NEWS_REQUEST_URL = "https://content.guardianapis.com/";
+    private static final String US_SECTION_STRING = "us/";
 
     private NewsAdapter newsAdapter;
     private TextView emptyStateTextView;
@@ -91,9 +94,20 @@ public class NewsFeedActivity extends AppCompatActivity implements LoaderManager
     @NonNull
     @Override
     public Loader<List<NewsArticle>> onCreateLoader(int i, @Nullable Bundle bundle) {
+
         SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(this);
 
-        return new NewsArticleLoader(this, NEWS_REQUEST_URL);
+        String displaySection = sharedPrefs.getString(getString(R.string.settings_sections_key), getString(R.string.settings_starting_section_default));
+
+        Uri baseUri = Uri.parse(NEWS_REQUEST_URL);
+        Uri.Builder uriBuilder = baseUri.buildUpon();
+
+        uriBuilder.appendPath(displaySection);
+        uriBuilder.appendQueryParameter("show-tags", "contributor");
+        uriBuilder.appendQueryParameter("api-key", BuildConfig.GuardianAPIKey);
+        Log.e("URI Builder", uriBuilder.toString());
+        return new NewsArticleLoader(this, uriBuilder.toString());
+
     }
 
     @Override

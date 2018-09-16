@@ -5,8 +5,8 @@
     <ListPreference
         android:defaultValue="@string/settings_starting_section_default"
         android:dialogTitle="Description"
-        android:entries="@array/us_main_sections"
-        android:entryValues="@array/us_main_sections"
+        android:entries="@array/us_main_labels"
+        android:entryValues="@array/us_main_values"
         android:inputType="numberDecimal"
         android:key="@string/settings_sections_key"
         android:selectAllOnFocus="true"

@@ -1,10 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string-array name="us_main_sections">
-        <item>News</item>
-        <item>Opinion</item>
-        <item>Sport</item>
-        <item>Culture</item>
-        <item>Lifestyle</item>
+    <string-array name="us_main_labels">
+        <item>@string/settings_section_usNews_label</item>
+        <item>@string/settings_section_tech_label</item>
+        <item>@string/settings_section_sport_label</item>
+        <item>@string/settings_section_culture_label</item>
+        <item>@string/settings_section_business_label</item>
+    </string-array>
+
+    <string-array name="us_main_values">
+        <item>@string/settings_section_usNews_key</item>
+        <item>@string/settings_section_tech_key</item>
+        <item>@string/settings_section_sport_key</item>
+        <item>@string/settings_section_culture_key</item>
+        <item>@string/settings_section_business_key</item>
     </string-array>
 </resources>
