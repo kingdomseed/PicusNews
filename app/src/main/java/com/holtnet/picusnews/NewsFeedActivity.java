@@ -11,6 +11,8 @@ import android.support.v4.app.LoaderManager;
 import android.support.v4.content.Loader;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -22,7 +24,7 @@ import java.util.List;
 public class NewsFeedActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<List<NewsArticle>> {
 
     private static final int NEWS_LOADER_ID = 1;
-    private static final String NEWS_REQUEST_URL = "https://content.guardianapis.com/us/technology?show-tags=contributor&api-key=11ea37a2-6fe3-412b-bfa8-e984bf496acc";
+    private static final String NEWS_REQUEST_URL = "https://content.guardianapis.com/us/technology?show-tags=contributor&api-key=" + BuildConfig.GuardianAPIKey;
 
     private NewsAdapter newsAdapter;
     private TextView emptyStateTextView;
@@ -63,6 +65,24 @@ public class NewsFeedActivity extends AppCompatActivity implements LoaderManager
         } else {
             emptyStateTextView.setText(R.string.no_internet);
         }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the Options Menu we specified in XML
+        getMenuInflater().inflate(R.menu.main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if (id == R.id.action_settings) {
+            Intent settingsIntent = new Intent(this, SettingsActivity.class);
+            startActivity(settingsIntent);
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     @NonNull

@@ -17,6 +17,7 @@
             android:id="@+id/article_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textColor="@color/textColorPrimary"
             android:textSize="22sp"
             tools:text="Title Text" />
 
@@ -24,6 +25,7 @@
             android:id="@+id/section_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textColor="@color/textColorSecondary"
             android:textSize="14sp"
             tools:text="Section Text" />
     </LinearLayout>
@@ -40,6 +42,7 @@
             android:id="@+id/author_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textColor="@color/textColorPrimary"
             android:textSize="12sp"
             tools:text="Author Name" />
 
@@ -47,6 +50,7 @@
             android:id="@+id/date_published"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textColor="@color/textColorPrimary"
             android:textSize="12sp"
             tools:text="Date published" />
 

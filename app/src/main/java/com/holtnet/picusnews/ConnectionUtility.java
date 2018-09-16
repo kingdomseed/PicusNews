@@ -20,6 +20,9 @@ import java.util.List;
 
 public final class ConnectionUtility {
 
+    private static final int readTimeOut = 10000;
+    private static final int connectTimeOut = 15000;
+
     private ConnectionUtility() {
 
     }
@@ -92,8 +95,8 @@ public final class ConnectionUtility {
         InputStream inputStream = null;
         try {
             urlConnection = (HttpURLConnection) url.openConnection();
-            urlConnection.setReadTimeout(10000);
-            urlConnection.setConnectTimeout(15000);
+            urlConnection.setReadTimeout(readTimeOut);
+            urlConnection.setConnectTimeout(connectTimeOut);
             urlConnection.setRequestMethod("GET");
             urlConnection.connect();
 

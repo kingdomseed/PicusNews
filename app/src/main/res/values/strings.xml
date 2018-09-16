@@ -2,4 +2,9 @@
     <string name="app_name">Picus News</string>
     <string name="no_news">No news articles to display. Check your connection.</string>
     <string name="no_internet">No internet connection.</string>
+    <string name="settings_menu_item">Settings</string>
+    <string name="settings_title">Picus News Settings</string>
+    <string name="settings_sections_label">Section Select</string>
+    <string name="settings_sections_key" translatable="false">section_key</string>
+    <string name="settings_starting_section_default" translatable="true">Technology</string>
 </resources>
